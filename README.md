@@ -34,6 +34,8 @@
 6. updatedAt
 7. published
 8. publishAt
+   
+
 }
 }
 
@@ -42,4 +44,5 @@
  1. GrapQl
  2. PostgerSQL
  3. Prisma
+   
 ]
