@@ -1,5 +1,5 @@
 const data = {
-    name : "Kamrul Hassan Jinuk",
+    name : "Kamrul Hassan",
     age : 24,
     profession : "Software Engineer",
     Location : "Cox`s Bazar, Chattogram, Bangladesh",
