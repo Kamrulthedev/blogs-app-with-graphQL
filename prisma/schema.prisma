@@ -23,6 +23,9 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   published Boolean  @default(false)
+
+
+  @@map("posts")
 }
 
 model User {
@@ -33,6 +36,8 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   posts     Post[]
+
+  @@map("users")
 }
 
 model Profile {
@@ -41,4 +46,7 @@ model Profile {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId    String
+
+
+  @@map("profiles")
 }
