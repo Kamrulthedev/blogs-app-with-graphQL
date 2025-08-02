@@ -24,7 +24,6 @@ model Post {
   updatedAt DateTime @updatedAt
   published Boolean  @default(false)
 
-
   @@map("posts")
 }
 
@@ -36,6 +35,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   posts     Post[]
+  profile   Profile?
 
   @@map("users")
 }
@@ -45,8 +45,8 @@ model Profile {
   bio       String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  userId    String
-
+  userId    Int      @unique
+  user      User     @relation(fields: [userId], references: [id])
 
   @@map("profiles")
 }
