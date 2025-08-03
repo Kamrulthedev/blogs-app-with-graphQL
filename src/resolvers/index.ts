@@ -1,12 +1,16 @@
 export const resolvers = {
   Query: {
-    hello: () => 'Hello, GraphQL from Apollo Server!',
+    books: () => books,
   },
 };
 
-
 const books = [
-    {
-        title : "The Awakening"
-    }
-]
+  {
+    title: 'The Awakening',
+    author: 'Kate Chopin',
+  },
+  {
+    title: 'City of Glass',
+    author: 'Paul Auster',
+  },
+];
