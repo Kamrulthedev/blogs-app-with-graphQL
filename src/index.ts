@@ -14,9 +14,6 @@ const typeDefs = `#graphql
   }
 `;
 
-
-
-
 const books = [
     {
         title: 'The Awakening',
