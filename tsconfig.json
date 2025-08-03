@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ES2020",                          // JavaScript এর modern feature support
+    "target": "ES2020",                         
     "module": "ES2022",                          // ESM support
     "moduleResolution": "node",                  // Node-style module resolution
     "esModuleInterop": true,                     // CommonJS module support
     "allowSyntheticDefaultImports": true,        // Default imports support
     "forceConsistentCasingInFileNames": true,    // Import path case sensitivity check
-    "strict": true,                              // Type checking সক্রিয়
-    "skipLibCheck": true,                        // Faster build (ignore .d.ts checking)
-    "outDir": "./dist",                          // Output directory
-    "rootDir": "./src"                           // Source directory
+    "strict": true,                            
+    "skipLibCheck": true,                       
+    "outDir": "./dist",                        
+    "rootDir": "./src"                       
   },
   "ts-node": {
-    "esm": true                                  // ts-node কে ESM mode এ চালাতে বলে
+    "esm": true                           
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
