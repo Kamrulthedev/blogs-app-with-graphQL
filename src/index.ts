@@ -1,15 +1,56 @@
-const data = {
-    name : "Kamrul Hassan",
-    age : 24,
-    profession : "Software Engineer",
-    Location : "Cox`s Bazar, Chattogram, Bangladesh",
-    hobbies: ["Coding", "Reading Books", "Travelling", "Playing Daba", "pricticing English"],
-    Skills : ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Express.js", "GrapjQl", "Prisma", "PostgreSQL", "MongoDB"], 
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+
+
+
+const typeDefs = `#graphql
+  type Book {
+    title: String
+    author: String
+  }
+
+  type Query {
+    books: [Book]
+  }
+`;
+
+
+
+
+const books = [
+    {
+        title: 'The Awakening',
+        author: 'Kate Chopin',
+    },
+    {
+        title: 'City of Glass',
+        author: 'Paul Auster',
+    },
+];
+
+
+
+const resolvers = {
+    Query: {
+        books: () => books,
+    },
+};
+
+
+
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+});
+
+
+async function bootstrap() {
+  const { url } = await startStandaloneServer(server, {
+    listen: { port: 4000 },
+  });
+
+  console.log(`🚀  Server ready at: ${url}`);
 }
 
-
-
-
-
-console.log("Hello, This is My Name: ", data);
+bootstrap();
 

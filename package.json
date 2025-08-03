@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch ./**/*.ts --exec \"node --loader ts-node/esm\" src/index.ts"
+
+  "dev": "nodemon --watch ./**/*.ts --exec \"node --loader ts-node/esm\" src/index.ts"
+
+
   },
   "keywords": [],
   "author": "",
