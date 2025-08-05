@@ -31,6 +31,7 @@ content:String
 author:User!
 post: Post!
 createdAt: String!
+updatedAt:String!
 }
 
 type User {
