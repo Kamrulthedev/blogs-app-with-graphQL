@@ -25,14 +25,6 @@ published : Boolean!
 }
 
 
-type Comment {
-id: ID!
-content:String
-author:User!
-post: Post!
-createdAt: String!
-updatedAt:String!
-}
 
 type User {
 id : ID!
