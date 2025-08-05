@@ -24,6 +24,11 @@ createdAt : String!
 published : Boolean!
 }
 
+
+type Comment {
+id: ID!
+}
+
 type User {
 id : ID!
 name : String!
