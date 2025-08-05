@@ -25,7 +25,6 @@ published : Boolean!
 }
 
 
-
 type User {
 id : ID!
 name : String!

@@ -9,9 +9,14 @@ export const resolvers = {
 
   Mutation : {
     signUp : async(parent: any, args: any, content: any) => {
-      
-      console.log("Sign Up Mutation called with args : ", args);
-
+      return await prisma.user.create({
+      data : {
+        name :args.name,
+        email: args.email,
+        password: args.password,
+        createdAt: new Date().toISOString()
+      }
+      })
     }
   }
 
