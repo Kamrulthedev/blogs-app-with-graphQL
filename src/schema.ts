@@ -14,6 +14,7 @@ signUp( name: String,
 }
 
 
+
 type Post {
 id: ID!
 title : String!
