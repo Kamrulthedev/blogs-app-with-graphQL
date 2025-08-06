@@ -6,13 +6,13 @@ const prisma = new PrismaClient();
 
 export const resolvers = {
 
-  Query :{
-     Users: async(_parent:any, args: any, content: any)=>{
-        const users = await prisma.user.findMany({
-          include: {posts: true}
-        })
-        return users;
-     }
+  Query: {
+    Users: async (_parent: any, args: any, content: any) => {
+      const users = await prisma.user.findMany({
+        include: { posts: true }
+      })
+      return users;
+    }
   },
 
 
@@ -38,11 +38,14 @@ export const resolvers = {
           email,
           password: hashedPassword
         },
-        include : {posts: true}
+        include: { posts: true }
       });
 
 
-      const token = jwt
+      const token = jwt.sign(
+        { userId: createdUser.id, email: createdUser.email, name: createdUser.name },
+        process.env.jwtSecret as string,
+        { expiresIn: "1d" });
 
       console.log("User Created:", createdUser);
       // Return the user without the password field
