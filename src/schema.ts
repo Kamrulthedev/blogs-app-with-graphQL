@@ -11,6 +11,10 @@ type Mutation {
 signUp( name: String, 
         email: String, 
         password : String) : SignUpResponse  
+signIn(
+   email: String!
+   password: String!
+   ): SignInResponse
 }
 
 
@@ -19,6 +23,10 @@ token: String!
 user: User!
 }
 
+type SignInResponse{
+token: String!
+user: User!
+}
 
 
 type Post {
