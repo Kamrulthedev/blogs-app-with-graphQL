@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken"
 
 const prisma = new PrismaClient();
 
@@ -39,6 +40,9 @@ export const resolvers = {
         },
         include : {posts: true}
       });
+
+
+      const token = jwt
 
       console.log("User Created:", createdUser);
       // Return the user without the password field
