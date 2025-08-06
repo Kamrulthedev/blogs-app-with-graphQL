@@ -8,26 +8,34 @@ export const resolvers = {
     signUp: async (_parent: any, args: { name: string; email: string; password: string }) => {
       const { name, email, password } = args;
 
+
+      // Check if the user already exists
       const existingUser = await prisma.user.findUnique({
         where: { email }
       });
-
       if (existingUser) {
         throw new Error("Email already registered");
       }
 
+      // Hash the password before saving
       const hashedPassword = await bcrypt.hash(password, 10);
 
+      // Create the new user
       const createdUser = await prisma.user.create({
         data: {
           name,
           email,
           password: hashedPassword
-        }
+        },
+        include : {posts: true}
       });
 
+      // Return the user without the password field
       const { password: _, ...safeUser } = createdUser;
       return safeUser;
     }
   }
 };
+
+
+
