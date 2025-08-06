@@ -11,9 +11,10 @@ export const resolvers = {
           include: {posts: true}
         })
         console.log(`Users fetched: ${users.length} `, users)
+        return users;
      }
   },
-
+  
 
 
   Mutation: {
