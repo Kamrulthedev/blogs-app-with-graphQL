@@ -10,6 +10,7 @@ export const resolvers = {
         const users = await prisma.user.findMany({
           include: {posts: true}
         })
+        console.log(`Users fetched: ${users.length} `, users)
      }
   },
 
