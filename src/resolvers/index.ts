@@ -19,7 +19,6 @@ export const resolvers = {
     signUp: async (_parent: any, args: { name: string; email: string; password: string }) => {
       const { name, email, password } = args;
 
-
       // Check if the user already exists
       const existingUser = await prisma.user.findUnique({
         where: { email }
@@ -47,6 +46,8 @@ export const resolvers = {
       return safeUser;
     }
   }
+
+
 };
 
 
