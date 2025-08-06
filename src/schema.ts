@@ -10,7 +10,13 @@ Profiles : [Profile]
 type Mutation {
 signUp( name: String, 
         email: String, 
-        password : String) : User  
+        password : String) : SignUpResponse  
+}
+
+
+type SignUpResponse {
+token: String!
+user: User!
 }
 
 

@@ -44,13 +44,15 @@ export const resolvers = {
 
       const token = jwt.sign(
         { userId: createdUser.id, email: createdUser.email, name: createdUser.name },
-        process.env.jwtSecret as string,
+        process.env.jwtSecret as string | "kamrul1234567899",
         { expiresIn: "1d" });
 
-      console.log("User Created:", createdUser);
+      console.log("jwt token:", token)
+
+      // console.log("User Created:", createdUser);
       // Return the user without the password field
       const { password: _, ...safeUser } = createdUser;
-      return safeUser;
+      return { token: token, user: safeUser };
     }
   }
 
