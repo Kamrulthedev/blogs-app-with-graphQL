@@ -53,7 +53,12 @@ export const resolvers = {
       // Return the user without the password field
       const { password: _, ...safeUser } = createdUser;
       return { token: token, user: safeUser };
-    }
+    },
+
+  signIn : async(parent: any, args: any, context:any) =>{
+
+  }
+
   }
 
 };

@@ -22,7 +22,6 @@ type SignUpResponse {
 token: String!
 user: User!
 }
-
 type SignInResponse{
 token: String!
 user: User!
