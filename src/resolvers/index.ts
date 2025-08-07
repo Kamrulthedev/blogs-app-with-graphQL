@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"
+import { jwtHelper } from "../utils/jwt-Halper";
 
 const prisma = new PrismaClient();
 
@@ -44,10 +45,8 @@ export const resolvers = {
       });
 
 
-      const token = jwt.sign(
-        { userId: createdUser.id, email: createdUser.email, name: createdUser.name },
-        process.env.jwtSecret as string | "kamrul1234567899",
-        { expiresIn: "1d" });
+      const token = jwtHelper({userId: createdUser.id, email:createdUser.email, name: createdUser.name})
+      console.log("Token Generated:", token)
 
       // console.log("User Created:", createdUser);
       // Return the user without the password field
