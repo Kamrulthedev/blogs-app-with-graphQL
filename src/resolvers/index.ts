@@ -65,6 +65,12 @@ export const resolvers = {
           email: args.email
         }
       })
+      // if (!user) {
+      //   return {
+      //     Error: "This Email is not registered!",
+      //     token: "null"
+      //   }
+      // }
       if (!user) {
         throw new Error("This Email is not registered")
       }
@@ -84,8 +90,8 @@ export const resolvers = {
 
       console.log('jwt token:', token)
       console.log("users:", user)
- 
-       return { token: token, user: user };
+
+      return { token: token, user: user };
 
     }
 
