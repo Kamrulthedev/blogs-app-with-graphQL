@@ -8,9 +8,11 @@ Profiles : [Profile]
 
 
 type Mutation {
-signUp( name: String, 
-        email: String, 
-        password : String) : SignUpResponse  
+signUp( name: String!, 
+        email: String!, 
+        password : String!,
+        bio : String
+        ) : SignUpResponse  
 signIn(
    email: String!
    password: String!

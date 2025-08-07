@@ -5,6 +5,14 @@ import { tokenHelper } from "../utils/tokenHelper";
 
 const prisma = new PrismaClient();
 
+type argsType = {
+  name: string;
+  email: string;
+  password: string;
+  bio?: string
+}
+
+
 export const resolvers = {
 
   Query: {
@@ -20,7 +28,7 @@ export const resolvers = {
   Mutation: {
 
     // User Sign Up Mutation
-    signUp: async (_parent: any, args: { name: string; email: string; password: string }) => {
+    signUp: async (_parent: any, args: argsType) => {
       const { name, email, password } = args;
 
       // Check if the user already exists
@@ -45,6 +53,7 @@ export const resolvers = {
       });
 
 
+      // generate jwt token
       const token = jwt.sign(
         { userId: createdUser.id, email: createdUser.email, name: createdUser.name },
         process.env.jwtSecret as string | "kamrul1234567899",
