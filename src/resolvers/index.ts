@@ -17,6 +17,8 @@ export const resolvers = {
 
 
   Mutation: {
+
+    // User Sign Up Mutation
     signUp: async (_parent: any, args: { name: string; email: string; password: string }) => {
       const { name, email, password } = args;
 
@@ -55,12 +57,23 @@ export const resolvers = {
       return { token: token, user: safeUser };
     },
 
+
+    // User Sign In Mutation
     signIn: async (parent: any, args: any, context: any) => {
       const user = await prisma.user.findFirst({
         where: {
           email: args.email
         }
       })
+      if (!user) {
+        throw new Error("This Email is not registered")
+      }
+
+      const inPasswordMatch = await bcrypt.compare(args?.password, user?.password);
+      if (!inPasswordMatch) {
+        throw new Error("Password is not matched")
+      }
+
 
       const token = jwt.sign(
         { userId: user?.id, email: user?.email, name: user?.name },
@@ -68,15 +81,11 @@ export const resolvers = {
         { expiresIn: "1d" }
       )
 
-      if(!user){
-        throw new Error("This Email is not registered")
-      }
+
       console.log('jwt token:', token)
       console.log("users:", user)
-      return {
-        Token: token,
-        user: user
-      }
+ 
+       return { token: token, user: user };
 
     }
 
