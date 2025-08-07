@@ -49,8 +49,6 @@ export const resolvers = {
         process.env.jwtSecret as string | "kamrul1234567899",
         { expiresIn: "1d" });
 
-      console.log("jwt token:", token)
-
       // console.log("User Created:", createdUser);
       // Return the user without the password field
       const { password: _, ...safeUser } = createdUser;
