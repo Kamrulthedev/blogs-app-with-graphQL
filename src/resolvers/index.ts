@@ -52,6 +52,15 @@ export const resolvers = {
         include: { posts: true }
       });
 
+      // Create Profile
+      if (args?.bio) {
+        await prisma.profile.create({
+          data: {
+            userId: createdUser.id,
+            bio: args.bio
+          }
+        })
+      }
 
       // generate jwt token
       const token = jwt.sign(
