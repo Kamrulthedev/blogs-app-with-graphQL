@@ -55,9 +55,30 @@ export const resolvers = {
       return { token: token, user: safeUser };
     },
 
-  signIn : async(parent: any, args: any, context:any) =>{
+    signIn: async (parent: any, args: any, context: any) => {
+      const user = await prisma.user.findFirst({
+        where: {
+          email: args.email
+        }
+      })
 
-  }
+      const token = jwt.sign(
+        { userId: user?.id, email: user?.email, name: user?.name },
+        process.env.jwtSecret as string | "jinuk1234567899",
+        { expiresIn: "1d" }
+      )
+
+      if(!user){
+        throw new Error("This Email is not registered")
+      }
+      console.log('jwt token:', token)
+      console.log("users:", user)
+      return {
+        Token: token,
+        user: user
+      }
+
+    }
 
   }
 
