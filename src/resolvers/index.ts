@@ -50,7 +50,7 @@ export const resolvers = {
         process.env.jwtSecret as string | "kamrul1234567899",
         { expiresIn: "1d" });
 
-      // const token = tokenHelper({userId: createdUser.id, email:createdUser.email, name:createdUser.name});
+      // const token = await tokenHelper({userId: createdUser.id})
       // console.log("Token", token);
 
       // console.log("User Created:", createdUser);
