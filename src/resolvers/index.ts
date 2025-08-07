@@ -65,12 +65,7 @@ export const resolvers = {
           email: args.email
         }
       })
-      // if (!user) {
-      //   return {
-      //     Error: "This Email is not registered!",
-      //     token: "null"
-      //   }
-      // }
+
       if (!user) {
         throw new Error("This Email is not registered")
       }
@@ -86,10 +81,6 @@ export const resolvers = {
         process.env.jwtSecret as string | "jinuk1234567899",
         { expiresIn: "1d" }
       )
-
-
-      console.log('jwt token:', token)
-      console.log("users:", user)
 
       return { token: token, user: user };
 

@@ -23,7 +23,6 @@ token: String!
 user: User!
 }
 type SignInResponse{
-Error: String!
 token: String!
 user: User!
 }
