@@ -79,11 +79,9 @@ export const resolvers = {
         process.env.jwtSecret as string | "jinuk1234567899",
         { expiresIn: "1d" }
       )
-
       return { token: token, user: user };
 
     }
-
   }
 
 };
