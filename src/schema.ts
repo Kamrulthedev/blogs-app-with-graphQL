@@ -12,7 +12,7 @@ signUp( name: String!,
         email: String!, 
         password : String!,
         bio : String
-        ) : SignUpResponse  
+        ) : SignUpResponse
 signIn(
    email: String!
    password: String!
