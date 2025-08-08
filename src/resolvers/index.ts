@@ -21,9 +21,10 @@ export const resolvers = {
         include: { posts: true }
       })
       return users;
-    }
+    },
+    Profile : async (parent: any, args: any, content: any) => {
 
-    Profile : async (parent: any, args: any, )
+    }
   },
 
 
