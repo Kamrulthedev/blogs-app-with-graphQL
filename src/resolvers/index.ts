@@ -22,6 +22,8 @@ export const resolvers = {
       })
       return users;
     }
+
+    Profile : async (parent: any, args: any, )
   },
 
 
