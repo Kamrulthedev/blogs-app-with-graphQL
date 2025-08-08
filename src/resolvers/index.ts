@@ -22,8 +22,15 @@ export const resolvers = {
       })
       return users;
     },
-    Profile : async (parent: any, args: any, content: any) => {
-
+    Profile: async (_parent: any, args: any, content: any) => {
+      const profile = await prisma.profile.findUnique({
+        where: {
+          userId: args.userId
+        },
+        include: { user: true }
+      })
+      console.log("Profile", profile);
+      return profile;
     }
   },
 
