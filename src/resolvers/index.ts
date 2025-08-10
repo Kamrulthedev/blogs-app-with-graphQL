@@ -22,26 +22,14 @@ export const resolvers = {
       })
       return users;
     },
-    Profiles: async (_parent: any, args: any, content: any) => {
-      console.log(args.userId);
-
-      // if (args.userId as string) {
-     
-      // }
-      // else {
-      //   throw new Error("User ID is required to fetch profile");
-      // }
-
-         const profile = await prisma.profile.findUnique({
-          where: {
-            userId: args.userId
-          },
-          include: { user: true }
-        })
-        console.log("Profile", profile);
-        return profile;
-
+    Profiles: async (_parent: any, args: { userId: number }) => {
+      const profile = await prisma.profile.findUnique({
+        where: { userId: args.userId },
+        include: { user: true }
+      });
+      return profile;
     }
+
   },
 
 
