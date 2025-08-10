@@ -23,7 +23,7 @@ export const resolvers = {
       return users;
     },
     Profiles: async (_parent: any, args: any, content: any) => {
-      console.log("Args", args);
+      console.log(args.userId);
 
       if (args.userId) {
         const profile = await prisma.profile.findUnique({
