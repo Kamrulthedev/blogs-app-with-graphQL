@@ -25,8 +25,14 @@ export const resolvers = {
     Profiles: async (_parent: any, args: any, content: any) => {
       console.log(args.userId);
 
-      if (args.userId as string) {
-        const profile = await prisma.profile.findUnique({
+      // if (args.userId as string) {
+     
+      // }
+      // else {
+      //   throw new Error("User ID is required to fetch profile");
+      // }
+
+         const profile = await prisma.profile.findUnique({
           where: {
             userId: args.userId
           },
@@ -34,10 +40,6 @@ export const resolvers = {
         })
         console.log("Profile", profile);
         return profile;
-      }
-      else {
-        throw new Error("User ID is required to fetch profile");
-      }
 
     }
   },
