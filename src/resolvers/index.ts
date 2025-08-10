@@ -29,7 +29,8 @@ export const resolvers = {
         const profile = await prisma.profile.findUnique({
           where: {
             userId: args.userId
-          }
+          },
+          include: {user: true}
         })
       }
       if(!args.userId){
