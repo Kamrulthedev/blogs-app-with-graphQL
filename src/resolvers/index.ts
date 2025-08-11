@@ -22,6 +22,7 @@ export const resolvers = {
       })
       return users;
     },
+    
     Profiles: async (_parent: any, args: { userId: number }) => {
       const profile = await prisma.profile.findUnique({
         where: { userId: args.userId },
