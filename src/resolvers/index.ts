@@ -121,16 +121,7 @@ export const resolvers = {
 
 
     // Create Post Mutation
-    CreateP0sot: async(parent: any, args: any, constent: any)=>{
-       const (title, contnet:String,  number) = args;
-       const createPost = await prisma.post.create({
-        data: {
-          title,
-          content,
-          authorId
-        }
-       })
-    }
+  
   }
 
 };
