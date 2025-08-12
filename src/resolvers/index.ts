@@ -113,6 +113,9 @@ export const resolvers = {
       return { token: token, user: user };
 
     }
+
+
+    // Create Post Mutation
   }
 
 };
