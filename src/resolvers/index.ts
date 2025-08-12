@@ -117,10 +117,13 @@ export const resolvers = {
       )
       return { token: token, user: user };
 
-    }
+    },
 
 
     // Create Post Mutation
+    CreateP0sot: async(parent: any, args: any, constent: any)=>{
+
+    }
   }
 
 };
