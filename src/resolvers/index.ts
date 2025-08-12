@@ -127,8 +127,12 @@ export const resolvers = {
           title: args.title,
           content: args.content,
           authorId: args.authorId
-        }
+        },
+        include: { author: true }
       })
+
+      console.log("New Post Created:", NewPost);
+      return NewPost;
     }
   }
 
