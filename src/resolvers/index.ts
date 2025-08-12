@@ -23,7 +23,7 @@ export const resolvers = {
       })
       return users;
     },
-    
+
 
     // Query to get all profiles
     Profiles: async (_parent: any, args: { userId: number }) => {
@@ -34,7 +34,7 @@ export const resolvers = {
       return profile;
     },
 
-     
+
 
   },
 
@@ -121,7 +121,15 @@ export const resolvers = {
 
 
     // Create Post Mutation
-  
+    createPost: async (parent: any, args: { title: string, content: string, authorId: number }, context: any) => {
+      const NewPost = await prisma.post.create({
+        data: {
+          title: args.title,
+          content: args.content,
+          authorId: args.authorId
+        }
+      })
+    }
   }
 
 };
