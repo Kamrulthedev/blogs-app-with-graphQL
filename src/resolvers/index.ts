@@ -16,6 +16,9 @@ type argsType = {
 export const resolvers = {
 
   Query: {
+    // Query to get all posts
+
+
     Users: async (_parent: any, args: any, content: any) => {
       const users = await prisma.user.findMany({
         include: { posts: true }
@@ -29,7 +32,9 @@ export const resolvers = {
         include: { user: true }
       });
       return profile;
-    }
+    },
+
+     
 
   },
 
