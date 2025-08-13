@@ -22,7 +22,11 @@ createPost(
   title: String!
   content: String!
   authorId: Int!
-  ) : Post
+  ) : PostResponse
+}
+
+type PostResponse {
+post: Post!
 }
 
 

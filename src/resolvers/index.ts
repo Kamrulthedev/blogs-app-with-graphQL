@@ -123,6 +123,9 @@ export const resolvers = {
     // Create Post Mutation
     createPost: async (parent: any, args: any, context: any) => {
       const { title, content, authorId } = args;
+
+      console.log("data", args);
+
     }
 
 
