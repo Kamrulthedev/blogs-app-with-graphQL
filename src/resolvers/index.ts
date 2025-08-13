@@ -34,9 +34,17 @@ export const resolvers = {
       return profile;
     },
 
-
+    // Query to get all posts
+    Posts : async(parent: any, args: any, content: any) =>{
+      const posts = await prisma.post.findMany({
+        include:{
+          author : true
+        }
+      })
+    }
 
   },
+
 
 
   Mutation: {
@@ -130,7 +138,7 @@ export const resolvers = {
       if (!author) {
         throw new Error("User is Not Registered")
       }
-      
+
       // Create The Post
       const post = await prisma.post.create({
         data: {
