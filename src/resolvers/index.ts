@@ -130,7 +130,7 @@ export const resolvers = {
       if (!author) {
         throw new Error("User is Not Registered")
       }
-
+      
       // Create The Post
       const post = await prisma.post.create({
         data: {
@@ -144,14 +144,10 @@ export const resolvers = {
       })
       console.log("Post Created:", post);
       return post;
-
     }
 
 
   }
-
-
-
 };
 
 
