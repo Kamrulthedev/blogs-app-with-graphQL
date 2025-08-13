@@ -123,9 +123,14 @@ export const resolvers = {
     // Create Post Mutation
     createPost: async (parent: any, args: any, context: any) => {
       const { title, content, authorId } = args;
-
+      // Check if the author exists
+      const author = await prisma.user.findUnique({
+        where : {id: authorId}
+      });
+      if(!author){
+        throw new Error("User is Nor Registered")
+      }
       console.log("data", args);
-
     }
 
 
