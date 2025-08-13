@@ -17,6 +17,12 @@ signIn(
    email: String!
    password: String!
    ): SignInResponse
+
+createPost(
+  title: String!
+  content: String!
+  authorId: Int!
+  ) : Post
 }
 
 
