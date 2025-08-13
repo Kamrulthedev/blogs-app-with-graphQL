@@ -22,12 +22,9 @@ createPost(
   title: String!
   content: String!
   authorId: Int!
-  ) : PostResponse
+  ) : Post
 }
 
-type PostResponse {
-post: Post!
-}
 
 
 type SignUpResponse {

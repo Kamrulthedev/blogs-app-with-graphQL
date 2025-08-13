@@ -125,11 +125,25 @@ export const resolvers = {
       const { title, content, authorId } = args;
       // Check if the author exists
       const author = await prisma.user.findUnique({
-        where : {id: authorId}
+        where: { id: authorId }
       });
-      if(!author){
-        throw new Error("User is Nor Registered")
+      if (!author) {
+        throw new Error("User is Not Registered")
       }
+
+      // Create The Post
+      const post = await prisma.post.create({
+        data: {
+          title,
+          content,
+          authorId
+        },
+        include: {
+          author: true
+        }
+      })
+
+
       console.log("data", args);
     }
 
