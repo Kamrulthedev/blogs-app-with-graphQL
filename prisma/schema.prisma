@@ -49,3 +49,6 @@ model Profile {
 
   @@map("profiles")
 }
+
+
+
