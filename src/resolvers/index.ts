@@ -142,9 +142,9 @@ export const resolvers = {
           author: true
         }
       })
+      console.log("Post Created:", post);
+      return post;
 
-
-      console.log("data", args);
     }
 
 
