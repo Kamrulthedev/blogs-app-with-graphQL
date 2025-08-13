@@ -10,7 +10,7 @@ type argsType = {
   email: string;
   password: string;
   bio?: string;
-}
+};
 
 
 export const resolvers = {
