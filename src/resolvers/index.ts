@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { tokenHelper } from "../utils/tokenHelper";
-import { Query } from "./Querys/Querys";
+import { Query } from "./Querys/index.js";
 
 const prisma = new PrismaClient();
 
