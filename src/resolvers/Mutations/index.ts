@@ -118,7 +118,7 @@ export const Mutation = {
           author: true
         }
       })
-      console.log("Post Created:", post);
+    //   console.log("Post Created:", post);
       return post;
     }
 
