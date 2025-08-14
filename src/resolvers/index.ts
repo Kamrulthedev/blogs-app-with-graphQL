@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { tokenHelper } from "../utils/tokenHelper";
-import { Query } from "./Query/Query";
+import { Query } from "./Querys/Querys";
 
 const prisma = new PrismaClient();
 
@@ -15,8 +15,7 @@ type argsType = {
 
 
 export const resolvers = {
-  Query
- 
+  Query,
   Mutation: {
 
     // User Sign Up Mutation
