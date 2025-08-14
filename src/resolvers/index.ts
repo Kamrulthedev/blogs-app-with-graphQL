@@ -41,6 +41,7 @@ export const resolvers = {
           author : true
         }
       })
+      console.log("Posts:", posts)
     }
 
   },
