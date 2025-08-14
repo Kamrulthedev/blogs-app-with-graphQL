@@ -42,6 +42,7 @@ export const resolvers = {
         }
       })
       console.log("Posts:", posts)
+      return posts;
     }
 
   },
