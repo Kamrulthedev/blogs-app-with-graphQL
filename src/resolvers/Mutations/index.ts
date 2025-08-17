@@ -1,11 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { tokenHelper } from "../../utils/tokenHelper.js";
 
 
-
-const prisma = new PrismaClient();
 
 type argsType = {
   name: string;
