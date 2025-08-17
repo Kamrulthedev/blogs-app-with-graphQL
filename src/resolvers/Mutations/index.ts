@@ -15,7 +15,7 @@ type argsType = {
 export const Mutation = {
 
     // User Sign Up Mutation
-    signUp: async (_parent: any, args: argsType) => {
+    signUp: async (_parent: any, args: argsType, {prisma}: any) => {
       const { name, email, password } = args;
 
       // Check if the user already exists
@@ -66,7 +66,7 @@ export const Mutation = {
 
 
     // User Sign In Mutation
-    signIn: async (parent: any, args: any, context: any) => {
+    signIn: async (parent: any, args: any, {prisma}: any) => {
       const user = await prisma.user.findFirst({
         where: {
           email: args.email
@@ -94,7 +94,7 @@ export const Mutation = {
 
 
     // Create Post Mutation
-    createPost: async (parent: any, args: any, context: any) => {
+    createPost: async (parent: any, args: any, {prisma}: any) => {
       const { title, content, authorId } = args;
       // Check if the author exists
       const author = await prisma.user.findUnique({
