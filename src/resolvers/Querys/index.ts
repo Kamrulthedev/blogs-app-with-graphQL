@@ -1,12 +1,12 @@
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 
 
 export const Query = {
     // Query to get all users
-    Users: async (_parent: any, args: any, content: any) => {
+    Users: async (_parent: any, args: any, {prisma}: any) => {
         const users = await prisma.user.findMany({
             include: { posts: true }
         })
@@ -15,7 +15,7 @@ export const Query = {
 
 
     // Query to get all profiles
-    Profiles: async (_parent: any, args: { userId: number }) => {
+    Profiles: async (_parent: any, args: { userId: number }, {prisma}: any) => {
         const profile = await prisma.profile.findUnique({
             where: { userId: args.userId },
             include: { user: true }
@@ -25,7 +25,7 @@ export const Query = {
 
 
     // Query to get all posts
-    Posts: async (parent: any, args: any, content: any) => {
+    Posts: async (parent: any, args: any, {prisma}: any) => {
         const posts = await prisma.post.findMany({
             include: {
                 author: true
