@@ -19,7 +19,9 @@ async function bootstrap() {
   const { url } = await startStandaloneServer(server, {
     listen: { port: 4001 },
     context: async() =>{
-      
+      return {
+        prisma
+      }
     }
   });
 
