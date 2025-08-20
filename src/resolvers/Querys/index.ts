@@ -32,6 +32,6 @@ export const Query = {
 
 
     // add more queries here as needed
-
+  
 
 };
