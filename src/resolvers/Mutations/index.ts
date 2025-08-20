@@ -93,6 +93,7 @@ export const Mutation = {
 
   // Create Post Mutation
   createPost: async (parent: any, args: any, { prisma }: any) => {
+    console.log("data:", args);
     const { title, content, authorId } = args;
     // Check if the author exists
     const author = await prisma.user.findUnique({
