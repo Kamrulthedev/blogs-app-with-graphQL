@@ -70,6 +70,7 @@ export const Mutation = {
         email: args.email
       }
     })
+    // console.log("user:", user);
 
     if (!user) {
       throw new Error("This Email is not registered")
@@ -102,7 +103,6 @@ export const Mutation = {
     if (!author) {
       throw new Error("User is Not Registered")
     }
-
     // console.log("Author Found:",author)
 
     // Create The Post
