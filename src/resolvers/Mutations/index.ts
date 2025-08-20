@@ -102,7 +102,7 @@ export const Mutation = {
       throw new Error("User is Not Registered")
     }
 
-    console.log("Author Found :", author)
+    // console.log("Author Found:",author)
 
     // Create The Post
     const post = await prisma.post.create({
