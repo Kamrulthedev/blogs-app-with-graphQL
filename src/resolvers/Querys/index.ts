@@ -2,7 +2,7 @@
 
 export const Query = {
     // Query to get all users
-    Users: async (_parent: any, args: any, {prisma}: any) => {
+    Users: async (_parent: any, args: any, { prisma }: any) => {
         const users = await prisma.user.findMany({
             include: { posts: true }
         })
@@ -11,7 +11,7 @@ export const Query = {
 
 
     // Query to get all profiles
-    Profiles: async (_parent: any, args: { userId: number }, {prisma}: any) => {
+    Profiles: async (_parent: any, args: { userId: number }, { prisma }: any) => {
         const profile = await prisma.profile.findUnique({
             where: { userId: args.userId },
             include: { user: true }
@@ -21,7 +21,7 @@ export const Query = {
 
 
     // Query to get all posts
-    Posts: async (parent: any, args: any, {prisma}: any) => {
+    Posts: async (parent: any, args: any, { prisma }: any) => {
         const posts = await prisma.post.findMany({
             include: {
                 author: true
@@ -29,5 +29,9 @@ export const Query = {
         })
         return posts;
     }
+
+
+    // add more queries here as needed
+
 
 };
