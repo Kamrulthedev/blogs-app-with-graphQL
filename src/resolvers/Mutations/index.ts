@@ -84,7 +84,7 @@ export const Mutation = {
 
     const token = jwt.sign(
       { userId: user?.id, email: user?.email, name: user?.name },
-      process.env.jwtSecret as string | "jinuk1234567899",
+      process.env.jwtSecret as string | "kamrul1234567899",
       { expiresIn: "1d" }
     )
     return { token: token, user: user };
