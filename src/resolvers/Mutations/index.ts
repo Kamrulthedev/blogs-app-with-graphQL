@@ -133,8 +133,11 @@ export const Mutation = {
       },
     });
 
-    console.log("Post Created:", post);
-    return post;
+    // console.log("Post Created:", post);
+    return {
+      userError: null,
+      post: post
+    };
   }
 
 
