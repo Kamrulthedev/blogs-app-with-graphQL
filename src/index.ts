@@ -5,6 +5,9 @@ import { resolvers } from './resolvers/index.js';
 import { Prisma, PrismaClient } from "@prisma/client";
 import { DefaultArgs } from '@prisma/client/runtime/library.js';
 import { JwtHelper } from './utils/tokenHelper.js';
+import jwt from "jsonwebtoken";
+import config from './config/index.js';
+
 
 
 const prisma = new PrismaClient();
@@ -23,7 +26,12 @@ async function bootstrap() {
     listen: { port: 4002 },
     context: async({req}): Promise<Context> =>{
       console.log(req.headers.authorization)
-      const decodedToken = await JwtHelper.DecodeToken(req.headers.authorization as string); 
+      
+      // Decoded with function
+      // const decodedToken = await JwtHelper.DecodeToken(req.headers.authorization as string); 
+
+      // Decoded Menual
+      const decodedToken = jwt.verify(req.headers.authorization as string, "kamrul1234567899");
       console.log(decodedToken)
       return {
         prisma
