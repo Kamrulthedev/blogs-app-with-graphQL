@@ -25,21 +25,6 @@ createPost(
 }
 
 
-type PostPayload {
-userError: String
-post: Post
-}
-
-
-type SignUpResponse {
-token: String!
-user: User!
-}
-type SignInResponse{
-token: String!
-user: User!
-}
-
 
 type Post {
 id: ID!
@@ -65,6 +50,21 @@ id : ID!
 bio : String!
 createdAt : String!
 user : User!
+}
+
+
+
+type PostPayload {
+userError: String
+post: Post
+}
+type SignUpResponse {
+token: String!
+user: User!
+}
+type SignInResponse{
+token: String!
+user: User!
 }
  
 `;
