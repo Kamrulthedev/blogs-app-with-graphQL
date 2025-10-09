@@ -94,30 +94,30 @@ export const Mutation = {
 
   // Create Post Mutation
   createPost: async (parent: any, args: any, { prisma }: any) => {
-    // console.log("data:", args);
-    const { title, content, authorId } = args;
-    // Check if the author exists
-    const author = await prisma.user.findUnique({
-      where: { id: authorId }
-    });
-    if (!author) {
-      throw new Error("User is Not Registered")
-    }
-    // console.log("Author Found:",author)
+    console.log("data:", args);
+    // const { title, content, authorId } = args;
+    // // Check if the author exists
+    // const author = await prisma.user.findUnique({
+    //   where: { id: authorId }
+    // });
+    // if (!author) {
+    //   throw new Error("User is Not Registered")
+    // }
+    // // console.log("Author Found:",author)
 
-    // Create The Post
-    const post = await prisma.post.create({
-      data: {
-        title,
-        content,
-        authorId
-      },
-      include: {
-        author: true
-      }
-    })
-    //   console.log("Post Created:", post);
-    return post;
+    // // Create The Post
+    // const post = await prisma.post.create({
+    //   data: {
+    //     title,
+    //     content,
+    //     authorId
+    //   },
+    //   include: {
+    //     author: true
+    //   }
+    // })
+    // //   console.log("Post Created:", post);
+    // return post;
   }
 
 
