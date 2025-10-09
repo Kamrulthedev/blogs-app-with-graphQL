@@ -16,6 +16,7 @@ const GenerateToken = async (payload: { userId: any }) => {
 const DecodeToken = async (token: string) => {
   try {
     const userData = jwt.verify(token, config.jwt.secret as string);
+    console.log(userData);
   } catch (error) {
     return error;
   }
@@ -23,6 +24,7 @@ const DecodeToken = async (token: string) => {
 
 
 export const JwtHelper = {
-  GenerateToken
+  GenerateToken,
+  DecodeToken
 };
 
