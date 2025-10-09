@@ -6,6 +6,6 @@ require("dotenv").config({path: path.join(process.cwd(), ".env")});
 
 export default {
     jwt :{
-       secret : process.env.jwtSecret as Secret
+       secret : process.env.jwtSecret as Secret || "kamrul1234567899"
     }
 };
