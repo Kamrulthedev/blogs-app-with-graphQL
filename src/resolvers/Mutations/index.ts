@@ -101,38 +101,40 @@ export const Mutation = {
 
   // Create Post Mutation
   createPost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
-    console.log("data:", args, decodedToken);
+    // console.log("Data:", args);
+    // console.log("Decoded Token:", decodedToken);
 
-    // // Check if the author exists
-    if (!decodedToken) {
+    // Check if the author exists
+    if (!decodedToken || !decodedToken.userId) {
       return {
         userError: "Forbidden Access",
-        post: null
-      }
-    };
+        post: null,
+      };
+    }
 
-    // Chack title and content
+    // Check title and content
     const { title, content } = args;
     if (!title || !content) {
       return {
-        userError: "title and content must be write",
-        post: null
-      }
-    };
+        userError: "Title and content must be provided",
+        post: null,
+      };
+    }
 
-    // // Create The Post
-    // const post = await prisma.post.create({
-    //   data: {
-    //     title,
-    //     content,
-    //     authorId
-    //   },
-    //   include: {
-    //     author: true
-    //   }
-    // })
-    // //   console.log("Post Created:", post);
-    // return post;
+    // Create the Post
+    const post = await prisma.post.create({
+      data: {
+        title,
+        content,
+        authorId: decodedToken.userId,
+      },
+      include: {
+        author: true,
+      },
+    });
+
+    console.log("Post Created:", post);
+    return post;
   }
 
 

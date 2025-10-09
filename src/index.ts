@@ -29,7 +29,8 @@ async function bootstrap() {
     listen: { port: 4002 },
     context: async ({ req }): Promise<Context> => {
       try {
-        console.log(req.headers.authorization)
+        // console.log(req.headers.authorization)
+        
         // Decoded with function
         // const decodedToken = await JwtHelper.DecodeToken(req.headers.authorization as string); 
 
