@@ -14,6 +14,9 @@ const prisma = new PrismaClient();
 
 interface Context {
   prisma: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>
+  decodedToken: {
+    userId: number
+  }
 };
 
 const server = new ApolloServer({
@@ -31,14 +34,16 @@ async function bootstrap() {
         // const decodedToken = await JwtHelper.DecodeToken(req.headers.authorization as string); 
 
         // Decoded Menual
-        const decodedToken = jwt.verify(req.headers.authorization as string, "kamrul1234567899");
-        console.log("User data", decodedToken)
-
+        const decodedToken = jwt.verify(req.headers.authorization as string, "kamrul1234567899") as {
+          userId: number
+        };
+        // console.log("User data", decodedToken.userId)
         return {
-          prisma
-        }
+          prisma,
+          decodedToken
+        } 
       }
-      catch (error : any) {
+      catch (error: any) {
         console.error("Error verifying token:", error.message);
         throw new Error("Unauthorized: Invalid or missing token");
       }
