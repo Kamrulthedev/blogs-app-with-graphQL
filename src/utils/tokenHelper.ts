@@ -13,8 +13,12 @@ const GenerateToken = async (payload: { userId: any }) => {
   }
 };
 
-const DecodeToken = async () => {
-
+const DecodeToken = async (token: string) => {
+  try {
+    const userData = jwt.verify(token, config.jwt.secret as string);
+  } catch (error) {
+    return error;
+  }
 }
 
 

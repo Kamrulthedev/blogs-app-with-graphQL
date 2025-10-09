@@ -83,16 +83,16 @@ export const Mutation = {
     }
 
 
-    // const token = jwt.sign(
-    //   { userId: user?.id, email: user?.email, name: user?.name },
-    //   process.env.jwtSecret as string | "kamrul1234567899",
-    //   { expiresIn: "1d" }
-    // )
+    const token = jwt.sign(
+      { userId: user?.id, email: user?.email, name: user?.name },
+      process.env.jwtSecret as string | "kamrul1234567899",
+      { expiresIn: "1d" }
+    )
 
-    console.log(user.id);
+    // console.log(user.id);
 
-    const token = await JwtHelper.GenerateToken({ userId: user?.id });
-    console.log("Generated Token:", token);
+    // const token = await JwtHelper.GenerateToken({ userId: user?.id });
+    // console.log("Generated Token:", token);
 
     return { token: token, user: user };
 
