@@ -18,7 +18,8 @@ const DecodeToken = async (token: string) => {
     const userData = jwt.verify(token, config.jwt.secret as string);
     console.log(userData);
   } catch (error) {
-    return error;
+    console.error("Error decoding token:", error);
+    throw new Error("Invalid token");
   }
 }
 
