@@ -7,7 +7,9 @@ const GenerateToken = async (payload: { userId: number }) => {
   return token;
 };
 
+const DecodeToken = async() =>{
 
+}
 
 
 export const JwtHelper = {
