@@ -21,10 +21,14 @@ signIn(
 createPost(
   title: String!
   content: String!
-  authorId: Int!
-  ) : Post
+  ) : PostPayload
 }
 
+
+type PostPayload {
+userError: String
+post: Post
+}
 
 
 type SignUpResponse {
