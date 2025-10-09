@@ -19,7 +19,7 @@ const server = new ApolloServer({
 
 async function bootstrap() {
   const { url } = await startStandaloneServer(server, {
-    listen: { port: 4001 },
+    listen: { port: 4002 },
     context: async(): Promise<Context> =>{
       return {
         prisma
