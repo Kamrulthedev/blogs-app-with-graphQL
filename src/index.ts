@@ -30,7 +30,7 @@ async function bootstrap() {
     // context: async ({ req }): Promise<Context> => {
     //   try {
     //     // console.log(req.headers.authorization)
-        
+
     //     // Decoded with function
     //     // const decodedToken = await JwtHelper.DecodeToken(req.headers.authorization as string); 
 
@@ -38,7 +38,7 @@ async function bootstrap() {
     //     const decodedToken = jwt.verify(req.headers.authorization as string, "kamrul12345678998") as {
     //       userId: number
     //     };
-        
+
     //     // console.log("User data", decodedToken.userId)
     //     return {
     //       prisma,
@@ -50,36 +50,36 @@ async function bootstrap() {
     //     throw new Error("Unauthorized: Invalid or missing token");
     //   }
     // }
-context: async ({ req }): Promise<Context> => {
-  const authHeader = req.headers.authorization;
+    context: async ({ req }): Promise<Context> => {
+      const authHeader = req.headers.authorization;
 
-  if (authHeader) {
-    try {
-      const decodedToken = jwt.verify(
-        authHeader,
-        "kamrul12345678998"
-      ) as { userId: number };
+      if (authHeader) {
+        try {
+          const decodedToken = jwt.verify(
+            authHeader,
+            "kamrul12345678998"
+          ) as { userId: number };
 
-      return {
-        prisma,
-        decodedToken,
-      };
-    } catch (error: any) {
-      console.error("Error verifying token:", error.message);
-      // Token invalid → treat as no user, but don't stop whole server
+          return {
+            prisma,
+            decodedToken,
+          };
+        } catch (error: any) {
+          console.error("Error verifying token:", error.message);
+          // Token invalid → treat as no user, but don't stop whole server
+          return {
+            prisma,
+            decodedToken: null as any,
+          };
+        }
+      }
+
+      // No token provided → public access allowed
       return {
         prisma,
         decodedToken: null as any,
       };
     }
-  }
-
-  // No token provided → public access allowed
-  return {
-    prisma,
-    decodedToken: null as any,
-  };
-}
 
 
   });
