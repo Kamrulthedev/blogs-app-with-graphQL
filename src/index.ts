@@ -27,28 +27,61 @@ const server = new ApolloServer({
 async function bootstrap() {
   const { url } = await startStandaloneServer(server, {
     listen: { port: 4002 },
-    context: async ({ req }): Promise<Context> => {
-      try {
-        // console.log(req.headers.authorization)
+    // context: async ({ req }): Promise<Context> => {
+    //   try {
+    //     // console.log(req.headers.authorization)
         
-        // Decoded with function
-        // const decodedToken = await JwtHelper.DecodeToken(req.headers.authorization as string); 
+    //     // Decoded with function
+    //     // const decodedToken = await JwtHelper.DecodeToken(req.headers.authorization as string); 
 
-        // Decoded Menual
-        const decodedToken = jwt.verify(req.headers.authorization as string, "kamrul1234567899") as {
-          userId: number
-        };
-        // console.log("User data", decodedToken.userId)
-        return {
-          prisma,
-          decodedToken
-        } 
-      }
-      catch (error: any) {
-        console.error("Error verifying token:", error.message);
-        throw new Error("Unauthorized: Invalid or missing token");
-      }
+    //     // Decoded Menual
+    //     const decodedToken = jwt.verify(req.headers.authorization as string, "kamrul12345678998") as {
+    //       userId: number
+    //     };
+        
+    //     // console.log("User data", decodedToken.userId)
+    //     return {
+    //       prisma,
+    //       decodedToken
+    //     } 
+    //   }
+    //   catch (error: any) {
+    //     console.error("Error verifying token:", error.message);
+    //     throw new Error("Unauthorized: Invalid or missing token");
+    //   }
+    // }
+context: async ({ req }): Promise<Context> => {
+  const authHeader = req.headers.authorization;
+
+  if (authHeader) {
+    try {
+      const decodedToken = jwt.verify(
+        authHeader,
+        "kamrul12345678998"
+      ) as { userId: number };
+
+      return {
+        prisma,
+        decodedToken,
+      };
+    } catch (error: any) {
+      console.error("Error verifying token:", error.message);
+      // Token invalid → treat as no user, but don't stop whole server
+      return {
+        prisma,
+        decodedToken: null as any,
+      };
     }
+  }
+
+  // No token provided → public access allowed
+  return {
+    prisma,
+    decodedToken: null as any,
+  };
+}
+
+
   });
 
   console.log(`🚀 Server ready at: ${url}`);
