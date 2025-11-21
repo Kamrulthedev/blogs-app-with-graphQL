@@ -57,8 +57,10 @@ async function bootstrap() {
         try {
           const decodedToken = jwt.verify(
             authHeader,
-            "kamrul12345678998"
+            "kamrul1234567899"
           ) as { userId: number };
+
+          console.log("Decoded Token in context:", decodedToken);
 
           return {
             prisma,
