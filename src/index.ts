@@ -67,7 +67,7 @@ async function bootstrap() {
             decodedToken,
           };
         } catch (error: any) {
-          console.error("Error verifying token:", error.message);
+          console.error("Error Verifying Token:", error.message);
           // Token invalid → treat as no user, but don't stop whole server
           return {
             prisma,
