@@ -60,7 +60,7 @@ async function bootstrap() {
             "kamrul1234567899"
           ) as { userId: number };
 
-          console.log("Decoded Token in context:", decodedToken);
+          console.log("Decoded Token in Context:", decodedToken);
 
           return {
             prisma,
