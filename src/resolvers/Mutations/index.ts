@@ -107,7 +107,7 @@ export const Mutation = {
     // Check if the author exists
     if (!decodedToken || !decodedToken.userId) {
       return {
-        userError: "Forbidden Access",
+        userError: "Forbidden Access!",
         post: null,
       };
     }
@@ -116,7 +116,7 @@ export const Mutation = {
     const { title, content } = args;
     if (!title || !content) {
       return {
-        userError: "Title and content must be provided",
+        userError: "Title And Content Must Be Provided!",
         post: null,
       };
     }
