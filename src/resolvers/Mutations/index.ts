@@ -74,7 +74,7 @@ export const Mutation = {
     // console.log("user:", user);
 
     if (!user) {
-      throw new Error("This Email is not registered")
+      throw new Error("This Email is Not Registered")
     }
 
     const inPasswordMatch = await bcrypt.compare(args?.password, user?.password);
