@@ -79,7 +79,7 @@ export const Mutation = {
 
     const inPasswordMatch = await bcrypt.compare(args?.password, user?.password);
     if (!inPasswordMatch) {
-      throw new Error("Password is not matched")
+      throw new Error("This Password is Not Matched!")
     }
 
 
