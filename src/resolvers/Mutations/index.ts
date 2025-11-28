@@ -22,7 +22,7 @@ export const Mutation = {
       where: { email }
     });
     if (existingUser) {
-      throw new Error("Already Registered This Email");
+      throw new Error("Already Registered This Email!");
     }
 
     // Hash the password before saving
@@ -74,7 +74,7 @@ export const Mutation = {
     // console.log("user:", user);
 
     if (!user) {
-      throw new Error("This Email is Not Registered")
+      throw new Error("This Email is Not Registered!")
     }
 
     const inPasswordMatch = await bcrypt.compare(args?.password, user?.password);
