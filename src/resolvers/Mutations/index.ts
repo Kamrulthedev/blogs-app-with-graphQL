@@ -22,7 +22,7 @@ export const Mutation = {
       where: { email }
     });
     if (existingUser) {
-      throw new Error("Email already registered");
+      throw new Error("Already Registered This Email");
     }
 
     // Hash the password before saving
