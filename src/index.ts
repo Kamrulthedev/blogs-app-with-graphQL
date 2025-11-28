@@ -86,7 +86,7 @@ async function bootstrap() {
 
   });
 
-  console.log(`🚀 Server ready at: ${url}`);
+  console.log(`🚀 Server Ready At: ${url}`);
 }
 
 bootstrap();
