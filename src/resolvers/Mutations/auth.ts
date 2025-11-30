@@ -2,7 +2,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { JwtHelper } from "../../utils/tokenHelper";
 
-
 type argsType = {
   name: string;
   email: string;
@@ -10,9 +9,8 @@ type argsType = {
   bio?: string;
 };
 
-
-
 export const authResolvers = {
+
       // User Sign Up Mutation
       signUp: async (_parent: any, args: argsType, { prisma }: any) => {
         const { name, email, password } = args;
