@@ -1,15 +1,9 @@
 import { authResolvers } from "./auth";
 
-
 export const Mutation = {
   ...authResolvers,
 
-  // Create Post Mutation
   createPost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
-    // console.log("Data:", args);
-    // console.log("Decoded Token:", decodedToken);
-
-    // Check if the author exists
     if (!decodedToken || !decodedToken.userId) {
       return {
         userError: "Forbidden Access!",
@@ -17,8 +11,8 @@ export const Mutation = {
       };
     }
 
-    // Check title and content
     const { title, content } = args;
+
     if (!title || !content) {
       return {
         userError: "Title And Content Must Be Provided!",
@@ -26,7 +20,6 @@ export const Mutation = {
       };
     }
 
-    // Create the Post
     const post = await prisma.post.create({
       data: {
         title,
@@ -38,16 +31,9 @@ export const Mutation = {
       },
     });
 
-    // console.log("Post Created:", post);
     return {
       userError: null,
-      post: post
+      post,
     };
-  }
-
-
-  // add more mutations here as needed
-
-
-
+  },
 };
