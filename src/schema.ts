@@ -21,7 +21,13 @@ signIn(
 createPost(
   title: String!
   content: String!
-  ) : PostPayload
+  ) : PostPayload,
+
+updatePost(
+postId:ID!,
+title: String, 
+content: String
+):PostPayload
 }
 
 
@@ -65,6 +71,11 @@ user: User!
 type SignInResponse{
 token: String!
 user: User!
+}
+
+input PostInput {
+title: String
+content: String
 }
  
 `;
