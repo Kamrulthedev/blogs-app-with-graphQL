@@ -1,14 +1,4 @@
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import { JwtHelper } from "../../utils/tokenHelper";
 import { authResolvers } from "./auth.js";
-
-type argsType = {
-  name: string;
-  email: string;
-  password: string;
-  bio?: string;
-};
 
 export const Mutation = {
 ...authResolvers,
