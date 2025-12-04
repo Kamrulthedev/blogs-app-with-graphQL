@@ -10,7 +10,6 @@ type argsType = {
   bio?: string;
 };
 
-
 export const Mutation = {
 ...authResolvers,
 

@@ -11,8 +11,6 @@ type argsType = {
 };
 
 
-
-
 export const  authResolvers = {
   // User Sign Up Mutation
   signUp: async (_parent: any, args: argsType, { prisma }: any) => {
