@@ -19,8 +19,7 @@ signIn(
    ): SignInResponse
 
 createPost(
-  title: String!
-  content: String!
+post: PostInput
   ) : PostPayload,
 
 updatePost(
