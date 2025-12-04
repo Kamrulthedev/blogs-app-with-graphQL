@@ -19,13 +19,12 @@ signIn(
    ): SignInResponse
 
 createPost(
-post: PostInput
+post: PostInput!
   ) : PostPayload,
 
 updatePost(
 postId:ID!,
-title: String, 
-content: String
+post: PostInput
 ):PostPayload
 }
 
