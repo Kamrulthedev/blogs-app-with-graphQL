@@ -99,7 +99,6 @@ export const PostResolvers = {
 
     // Delete Post Mutation
     deletePost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
-        const { postId } = args;
         console.log({ "Args": args, "DecodedToken": decodedToken })
 
         // Check if the author exists
@@ -114,7 +113,6 @@ export const PostResolvers = {
         const user = await prisma.user.findUnique({
             where: { id: decodedToken.userId }
         });
-
         if (!user) {
             return {
                 userError: "User Not Found!"
@@ -123,7 +121,7 @@ export const PostResolvers = {
 
         // Check Post ID Exists
         const existsPost = await prisma.post.findUnique({
-            where: { id: Number(postId) }
+            where: { id: Number(args.postId) }
         })
         if (!existsPost) {
             return {
@@ -140,15 +138,13 @@ export const PostResolvers = {
         }
 
         // Update Post (Main Function)
-        const DeletePost = await prisma.post.delete({
-            where: { id: Number(postId) }
+        const deletePost = await prisma.post.delete({
+            where: { id: Number(args.postId) }
         })
         return {
             userError: null,
-            post: DeletePost
+            post: deletePost
         }
-
-
 
     }
 
