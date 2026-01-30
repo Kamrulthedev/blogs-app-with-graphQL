@@ -1,16 +1,7 @@
-const CheckUserAccess = async () => {
-    
-    // Check if the author exists
-    if (!decodedToken || !decodedToken.userId) {
-        return {
-            userError: "Unauthorized Access!",
-            post: null
-        }
-    };
-
+export const CheckUserAccess = async (prisma: any, userId: any, postId: any) => {
     // Check token Auth Id Exists Post Author Id 
     const user = await prisma.user.findUnique({
-        where: { id: decodedToken.userId }
+        where: { id: userId }
     });
 
     if (!user) {
@@ -36,5 +27,4 @@ const CheckUserAccess = async () => {
             userError: "Post Not Wound By User!"
         }
     }
-
-}
+};
