@@ -64,6 +64,14 @@ export const PostResolvers = {
                 userError: "User Not Found!"
             }
         }
+
+        // Check Post ID Exists
+        const existsPost = await prisma.post.findUnique({
+            where: {
+                id: postId
+            } 
+        })
+        
     
     }
 
