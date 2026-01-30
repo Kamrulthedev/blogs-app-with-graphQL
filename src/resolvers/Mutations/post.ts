@@ -75,7 +75,7 @@ export const PostResolvers = {
                 userError: "Post Not Found!",
                 post: null
             }
-        }
+        } 
     
     }
 
