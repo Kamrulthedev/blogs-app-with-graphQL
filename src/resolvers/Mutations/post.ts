@@ -43,7 +43,7 @@ export const PostResolvers = {
 
     // Update Post Mutation
     updatePost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
-
+       console.log({"Args": args, "DecodedToken": decodedToken})
         const { postId, post } = args;
 
         // Check if the author exists
@@ -55,6 +55,15 @@ export const PostResolvers = {
         };
 
         // Check token Auth Id Exists Post Author Id 
+        const user = await prisma.user.findUnique({
+            where: { id: decodedToken.userId}
+        });
+       
+        if(!user){
+            return {
+                userError: "User Not Found!"
+            }
+        }
     
     }
 
