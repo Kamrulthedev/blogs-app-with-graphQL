@@ -43,7 +43,7 @@ export const PostResolvers = {
 
     // Update Post Mutation
     updatePost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
-
+     console.log({"args": args, "decodedToken": decodedToken});
     }
 
 
