@@ -81,7 +81,15 @@ export const PostResolvers = {
             return {
                 userError : "Post Not Wound By User!"
             }
-        }
+        }   
+
+        // Update Post (Main Function)
+        const UpdatePost = await prisma.post.update({
+            where: { id: Number(postId)},
+            data: {
+                
+            }
+        })
 
     }
 
