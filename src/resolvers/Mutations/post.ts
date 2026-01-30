@@ -65,13 +65,14 @@ export const PostResolvers = {
             }
         }
 
+        // Normalize Post ID to integer for Prisma (schema expects Int)
+        const postIdInt = typeof postId === 'string' ? parseInt(postId, 10) : postId;
+
         // Check Post ID Exists
         const existsPost = await prisma.post.findUnique({
-            where: {
-                id: postId
-            } 
+            where: { id: postIdInt }
         })
-        
+        console.log(existsPost)
     
     }
 
