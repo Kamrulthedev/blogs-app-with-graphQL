@@ -19,7 +19,7 @@ signIn(
    ): SignInResponse
 
 createPost(
-post: PostInput!
+post: PostInput! 
   ) : PostPayload,
 
 updatePost(
