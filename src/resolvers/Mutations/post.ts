@@ -54,8 +54,8 @@ export const PostResolvers = {
             }
         };
 
-        // Check post exist this user
-
+        // Check token Auth Id Exists Post Author Id 
+    
     }
 
 
