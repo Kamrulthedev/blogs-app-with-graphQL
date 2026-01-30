@@ -93,7 +93,11 @@ export const PostResolvers = {
             post: UpdatePost
         }
 
-    }
+    },
 
+    // Delete Post Mutation
+    deletePost: async (parent: any, args: any, { prisma, decodedToken}: any) => {
+
+    }
 
 };
