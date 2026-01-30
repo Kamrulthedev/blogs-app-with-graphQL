@@ -1,7 +1,7 @@
 
 export const PostResolvers = {
     // Create Post Mutation
-    createPost: async (parent: any, {post}: any, { prisma, decodedToken }: any) => {
+    createPost: async (parent: any, { post }: any, { prisma, decodedToken }: any) => {
         // console.log("Data:", args);
         // console.log("Decoded Token:", decodedToken);
 
@@ -39,45 +39,12 @@ export const PostResolvers = {
             userError: null,
             post: Createpost
         };
-    }
+    },
 
     // Update Post Mutation
-    updatePost: async (parent: any, { id, post }: any, { prisma, decodedToken }: any) => {
-        // Check if the author exists
-        if (!decodedToken || !decodedToken.userId) {
-            return {
-                userError: "Forbidden Access!",
-                post: null,
-            };
-        }
+    updatePost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
 
-        // Check title and content
-        const { title, content } = post;
-        if (!title || !content) {
-            return {
-                userError: "Title And Content Must Be Provided!",
-                post: null,
-            };
-        }
-
-        // Update the Post
-        const updatedPost = await prisma.post.update({
-            where: {
-                id,
-                authorId: decodedToken.userId,
-            },
-            data: {
-                title,
-                content,
-            },
-            include: {
-                author: true,
-            },
-        });
-
-        return {
-            userError: null,
-            post: updatedPost
-        };
     }
+
+
 };

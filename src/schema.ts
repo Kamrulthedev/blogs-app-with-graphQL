@@ -24,7 +24,7 @@ post: PostInput!
 
 updatePost(
 postId:ID!,
-post: PostInput
+post: PostInput!
 ):PostPayload
 }
 
