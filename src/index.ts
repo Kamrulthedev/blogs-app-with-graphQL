@@ -60,14 +60,14 @@ async function bootstrap() {
             "kamrul1234567899"
           ) as { userId: number };
 
-          console.log("Decoded Token in Context:", decodedToken);
+          // console.log("Decoded Token in Context:", decodedToken);
 
           return {
             prisma,
             decodedToken,
           };
         } catch (error: any) {
-          console.error("Error Verifying Token:", error.message);
+          // console.error("Error Verifying Token:", error.message);
           // Token invalid → treat as no user, but don't stop whole server
           return {
             prisma,
