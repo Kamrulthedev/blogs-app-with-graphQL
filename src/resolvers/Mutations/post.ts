@@ -1,4 +1,3 @@
-import { CheckUserAccess } from "../../utils/checkUser";
 
 export const PostResolvers = {
     // Create Post Mutation
@@ -44,7 +43,7 @@ export const PostResolvers = {
 
     // Update Post Mutation
     updatePost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
-        // console.log({ "Args": args, "DecodedToken": decodedToken })
+        console.log({ "Args": args, "DecodedToken": decodedToken })
         const { postId, post } = args;
 
         // Check if the author exists
@@ -55,13 +54,38 @@ export const PostResolvers = {
             }
         };
 
-        // call foren function
-        const error = await CheckUserAccess(prisma, decodedToken.userId, postId);
+        // Check token Auth Id Exists Post Author Id 
+        const user = await prisma.user.findUnique({
+            where: { id: decodedToken.userId }
+        });
 
+        if (!user) {
+            return {
+                userError: "User Not Found!"
+            }
+        }
+
+        // Check Post ID Exists
+        const existsPost = await prisma.post.findUnique({
+            where: { id: Number(postId) }
+        })
+        if (!existsPost) {
+            return {
+                userError: "Post Not Found!",
+                post: null
+            }
+        }
+
+        // Check Author Id and User Id Match
+        if(existsPost.authorId !== user.id){
+            return {
+                userError : "Post Not Wound By User!"
+            }
+        }   
 
         // Update Post (Main Function)
         const UpdatePost = await prisma.post.update({
-            where: { id: Number(postId) },
+            where: { id: Number(postId)},
             data: post
         })
         return {

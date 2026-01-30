@@ -1,30 +1,30 @@
 export const CheckUserAccess = async (prisma: any, userId: any, postId: any) => {
-    // Check token Auth Id Exists Post Author Id 
-    const user = await prisma.user.findUnique({
-        where: { id: userId }
-    });
+        // Check token Auth Id Exists Post Author Id 
+        const user = await prisma.user.findUnique({
+            where: { id: userId }
+        });
 
-    if (!user) {
-        return {
-            userError: "User Not Found!"
+        if (!user) {
+            return {
+                userError: "User Not Found!"
+            }
         }
-    }
 
-    // Check Post ID Exists
-    const existsPost = await prisma.post.findUnique({
-        where: { id: Number(postId) }
-    })
-    if (!existsPost) {
-        return {
-            userError: "Post Not Found!",
-            post: null
+        // Check Post ID Exists
+        const existsPost = await prisma.post.findUnique({
+            where: { id: Number(postId) }
+        })
+        if (!existsPost) {
+            return {
+                userError: "Post Not Found!",
+                post: null
+            }
         }
-    }
 
-    // Check Author Id and User Id Match
-    if (existsPost.authorId !== user.id) {
-        return {
-            userError: "Post Not Wound By User!"
+        // Check Author Id and User Id Match
+        if (existsPost.authorId !== user.id) {
+            return {
+                userError: "Post Not Wound By User!"
+            }
         }
-    }
 };
