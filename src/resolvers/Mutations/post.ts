@@ -77,19 +77,21 @@ export const PostResolvers = {
         }
 
         // Check Author Id and User Id Match
-        if(existsPost.authorId !== user.id){
+        if (existsPost.authorId !== user.id) {
             return {
-                userError : "Post Not Wound By User!"
+                userError: "Post Not Wound By User!"
             }
-        }   
+        }
 
         // Update Post (Main Function)
         const UpdatePost = await prisma.post.update({
-            where: { id: Number(postId)},
-            data: {
-                
-            }
+            where: { id: Number(postId) },
+            data: post
         })
+        return {
+            userError: null,
+            post: UpdatePost
+        }
 
     }
 
