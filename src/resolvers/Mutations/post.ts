@@ -97,7 +97,15 @@ export const PostResolvers = {
 
     // Delete Post Mutation
     deletePost: async (parent: any, args: any, { prisma, decodedToken}: any) => {
+       const { postId} = args;
 
+    // Check if the author exists
+    if(!decodedToken || !decodedToken.userId){
+        return {
+            userError: "Unauthorized Access!",
+            post: null
+        }
+    }
     }
 
 };
