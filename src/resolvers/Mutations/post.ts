@@ -43,7 +43,19 @@ export const PostResolvers = {
 
     // Update Post Mutation
     updatePost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
-     console.log({"args": args, "decodedToken": decodedToken});
+
+        const { postId, post } = args;
+
+        // Check if the author exists
+        if (!decodedToken || !decodedToken.userId) {
+            return {
+                userError: "Unauthorized Access!",
+                post: null
+            }
+        };
+
+        // Check post exist this user
+
     }
 
 
