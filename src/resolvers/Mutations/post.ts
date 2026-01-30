@@ -77,6 +77,11 @@ export const PostResolvers = {
         }
 
         // Check Author Id and User Id Match
+        if(existsPost.authorId !== user.id){
+            return {
+                userError : "Post Not Wound By User!"
+            }
+        }
 
     }
 
