@@ -1,3 +1,4 @@
+import { CheckUserAccess } from "../../utils/checkUser";
 
 export const PostResolvers = {
     // Create Post Mutation
@@ -54,6 +55,8 @@ export const PostResolvers = {
             }
         };
 
+        // call foren function
+        const error = await CheckUserAccess(prisma, decodedToken.userId, postId);
 
 
         // Update Post (Main Function)
