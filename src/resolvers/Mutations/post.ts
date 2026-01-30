@@ -41,6 +41,7 @@ export const PostResolvers = {
         };
     },
 
+
     // Update Post Mutation
     updatePost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
         console.log({ "Args": args, "DecodedToken": decodedToken })
@@ -77,15 +78,15 @@ export const PostResolvers = {
         }
 
         // Check Author Id and User Id Match
-        if(existsPost.authorId !== user.id){
+        if (existsPost.authorId !== user.id) {
             return {
-                userError : "Post Not Wound By User!"
+                userError: "Post Not Wound By User!"
             }
-        }   
+        }
 
         // Update Post (Main Function)
         const UpdatePost = await prisma.post.update({
-            where: { id: Number(postId)},
+            where: { id: Number(postId) },
             data: post
         })
         return {
@@ -95,17 +96,60 @@ export const PostResolvers = {
 
     },
 
-    // Delete Post Mutation
-    deletePost: async (parent: any, args: any, { prisma, decodedToken}: any) => {
-       const { postId} = args;
 
-    // Check if the author exists
-    if(!decodedToken || !decodedToken.userId){
-        return {
-            userError: "Unauthorized Access!",
-            post: null
+    // Delete Post Mutation
+    deletePost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
+        const { postId } = args;
+        console.log({ "Args": args, "DecodedToken": decodedToken })
+
+        // Check if the author exists
+        if (!decodedToken || !decodedToken.userId) {
+            return {
+                userError: "Unauthorized Access!",
+                post: null
+            }
         }
-    }
+
+        // Check token Auth Id Exists Post Author Id 
+        const user = await prisma.user.findUnique({
+            where: { id: decodedToken.userId }
+        });
+
+        if (!user) {
+            return {
+                userError: "User Not Found!"
+            }
+        }
+
+        // Check Post ID Exists
+        const existsPost = await prisma.post.findUnique({
+            where: { id: Number(postId) }
+        })
+        if (!existsPost) {
+            return {
+                userError: "Post Not Found!",
+                post: null
+            }
+        }
+
+        // Check Author Id and User Id Match
+        if (existsPost.authorId !== user.id) {
+            return {
+                userError: "Post Not Wound By User!"
+            }
+        }
+
+        // Update Post (Main Function)
+        const DeletePost = await prisma.post.delete({
+            where: { id: Number(postId) }
+        })
+        return {
+            userError: null,
+            post: DeletePost
+        }
+
+
+
     }
 
 };
