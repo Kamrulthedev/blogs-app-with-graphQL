@@ -99,6 +99,7 @@ export const PostResolvers = {
 
     // Delete Post Mutation
     deletePost: async (_: any, args: any, { prisma, decodedToken }: any) => {
+        // Check if the author exists
         if (!decodedToken?.userId) {
             return {
                 userError: "Unauthorized Access!",
