@@ -142,9 +142,21 @@ export const PostResolvers = {
             userError: "Post Deleted Successfully!",
             post: deletedPost
         }
-    }
+    },
 
     // Publish Post Mutation
+     publishPost: async (parent: any, args: any, { prisma, decodedToken} : any) =>{
+      const { postId} = args;
 
+    //   Check if the author exists
+    if(!decodedToken || !decodedToken.userId){
+        return {
+            userError: "Forbidden Access!",
+            post: null
+        }
+    }
+
+    // Check Post Id Exists
+     }
 
 };
