@@ -138,7 +138,7 @@ export const PostResolvers = {
         });
 
         return {
-            userError: null,
+            userError: "Post Deleted Successfully!",
             post: deletedPost
         }
     }
