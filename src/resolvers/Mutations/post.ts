@@ -145,18 +145,29 @@ export const PostResolvers = {
     },
 
     // Publish Post Mutation
-     publishPost: async (parent: any, args: any, { prisma, decodedToken} : any) =>{
-      const { postId} = args;
+    publishPost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
+        const { postId } = args;
 
-    //   Check if the author exists
-    if(!decodedToken || !decodedToken.userId){
-        return {
-            userError: "Forbidden Access!",
-            post: null
+        //   Check if the author exists
+        if (!decodedToken || !decodedToken.userId) {
+            return {
+                userError: "Forbidden Access!",
+                post: null
+            }
         }
-    }
 
-    // Check Post Id Exists
-     }
+        // Check token Auth Id Exists Post Author Id 
+        const user = await prisma.user.findUnique({
+            where: { id: decodedToken.userId }
+        });
+
+        if (!user) {
+            return {
+                userError: "User Not Found!"
+            }
+        }
+
+        // Check Post Id Exists
+    }
 
 };
