@@ -190,8 +190,10 @@ export const PostResolvers = {
             where: { id: Number(postId) },
             data: { published: true }
         })
-
-
+           return {
+            userError: "Post Published Successfully!",
+            post: publishedPost
+           }
 
     }
 
