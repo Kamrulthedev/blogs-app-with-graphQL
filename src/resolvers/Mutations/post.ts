@@ -185,6 +185,13 @@ export const PostResolvers = {
             }
         }
 
+        // Publish the Post
+        const publishedPost = await prisma.post.update({
+            where: { id: Number(postId) },
+            data: { published: true }
+        })
+
+
 
     }
 
