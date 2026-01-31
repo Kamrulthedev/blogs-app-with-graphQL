@@ -135,7 +135,7 @@ export const PostResolvers = {
 
         const deletedPost = await prisma.post.delete({
             where: { id: postId },
-            include: { author: true}
+            include: { author: true }
         });
 
         return {
@@ -143,6 +143,8 @@ export const PostResolvers = {
             post: deletedPost
         }
     }
+
+    // Publish Post Mutation
 
 
 };
