@@ -98,54 +98,49 @@ export const PostResolvers = {
 
 
     // Delete Post Mutation
-    deletePost: async (parent: any, args: any, { prisma, decodedToken }: any) => {
-        console.log({ "Args": args, "DecodedToken": decodedToken })
-
-        // Check if the author exists
-        if (!decodedToken || !decodedToken.userId) {
+    deletePost: async (_: any, args: any, { prisma, decodedToken }: any) => {
+        if (!decodedToken?.userId) {
             return {
                 userError: "Unauthorized Access!",
                 post: null
             }
         }
 
-        // Check token Auth Id Exists Post Author Id 
-        const user = await prisma.user.findUnique({
-            where: { id: decodedToken.userId }
-        });
-        if (!user) {
+        const postId = Number(args.postId);
+        if (isNaN(postId)) {
             return {
-                userError: "User Not Found!"
+                userError: "Invalid Post ID",
+                post: null
             }
         }
 
-        // Check Post ID Exists
-        const existsPost = await prisma.post.findUnique({
-            where: { id: Number(args.postId) }
-        })
-        if (!existsPost) {
+        const post = await prisma.post.findUnique({
+            where: { id: postId }
+        });
+
+        if (!post) {
             return {
                 userError: "Post Not Found!",
                 post: null
             }
         }
 
-        // Check Author Id and User Id Match
-        if (existsPost.authorId !== user.id) {
+        if (post.authorId !== decodedToken.userId) {
             return {
-                userError: "Post Not Wound By User!"
+                userError: "Post Not Owned By User!",
+                post: null
             }
         }
 
-        // Update Post (Main Function)
-        const deletePost = await prisma.post.delete({
-            where: { id: Number(args.postId) }
-        })
+        const deletedPost = await prisma.post.delete({
+            where: { id: postId }
+        });
+
         return {
             userError: null,
-            post: deletePost
+            post: deletedPost
         }
-
     }
+
 
 };
