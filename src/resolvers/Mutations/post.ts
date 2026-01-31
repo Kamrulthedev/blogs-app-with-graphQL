@@ -138,7 +138,7 @@ export const PostResolvers = {
         }
 
         // Update Post (Main Function)
-        const deletePost = await prisma.post.delete({
+        const deletePost = await prisma.post.delete({ 
             where: { id: Number(args.postId) }
         })
         return {
