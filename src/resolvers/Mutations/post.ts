@@ -133,11 +133,15 @@ export const PostResolvers = {
         }
 
         const deletedPost = await prisma.post.delete({
-            where: { id: postId }
+            where: { id: postId },
+            include: {
+                author: true
+            }
         });
 
+
         return {
-            userError: null,
+            userError: "Post Deleted Successfully!",
             post: deletedPost
         }
     }
