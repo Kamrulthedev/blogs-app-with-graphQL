@@ -20,17 +20,22 @@ export const Query = {
     },
 
 
-    // Query to get all posts
-    Posts: async (parent: any, args: any, { prisma }: any) => {
+    // // Query to get all posts
+    // Posts: async (parent: any, args: any, { prisma }: any) => {
+    //     const posts = await prisma.post.findMany({
+    //         include: {
+    //             author: true
+    //         }
+    //     })
+    //     return posts;
+    // },
+
+
+    Posts: async(parent: any, args: any, {prisma}: any)=>{
         const posts = await prisma.post.findMany({
-            include: {
-                author: true
-            }
-        })
-        return posts;
+            where: { published: true}
+    })
     }
-
-
     // add more queries here as needed
   
 
