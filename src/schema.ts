@@ -7,7 +7,6 @@ Users : [User]
 Profiles(userId: Int!) : Profile
 }
 
-
 type Mutation {
 signUp( name: String!, 
         email: String!, 

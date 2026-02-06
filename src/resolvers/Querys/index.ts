@@ -11,7 +11,7 @@ export const Query = {
 
 
     // Query to get all profiles
-    Profiles: async (_parent: any, args: { userId: number }, { prisma }: any) => {
+    Profiles: async (_parent: any, args: { userId: number }, { prisma, decodedToken }: any) => {
         const profile = await prisma.profile.findUnique({
             where: { userId: args.userId },
             include: { user: true }
