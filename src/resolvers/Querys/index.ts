@@ -30,12 +30,16 @@ export const Query = {
                 author: true
             },
             orderBy: [
-                {createdAt: "desc"}
+                { createdAt: "desc" }
             ]
         })
         return posts;
     },
 
+    // Query to get the current authenticated user
+    me: async (parent: any, args: any, { prisma, decodedToken }: any) => {
+
+    }
 
 
     // add more queries here as needed
