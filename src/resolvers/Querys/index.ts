@@ -40,7 +40,7 @@ export const Query = {
     me: async (parent: any, args: any, { prisma, decodedToken }: any) => {
         const user = await prisma.user.findUnique({
             where: { id: decodedToken.userId },
-            include: { posts: true }
+            include: { posts: { where: {published: true}}}
         })
         return user;
     }
