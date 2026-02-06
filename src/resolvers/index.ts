@@ -4,7 +4,7 @@ import { Mutation } from "./Mutations/index.js";
 
 export const resolvers = {
   Query,
-  Mutation
+  Mutation,
   
 };
 
