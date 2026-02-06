@@ -38,7 +38,7 @@ export const Query = {
 
     // Query to get the current authenticated user
     me: async (parent: any, args: any, { prisma, decodedToken }: any) => {
-
+       
     }
 
 
