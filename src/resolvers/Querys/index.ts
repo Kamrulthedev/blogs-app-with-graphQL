@@ -24,7 +24,7 @@ export const Query = {
     Posts: async (parent: any, args: any, { prisma }: any) => {
         const posts = await prisma.post.findMany({
             where: {
-               published: true
+                published: true
             },
             include: {
                 author: true
@@ -32,8 +32,6 @@ export const Query = {
         })
         return posts;
     },
-
-
 
 
 
