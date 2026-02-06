@@ -28,7 +28,10 @@ export const Query = {
             },
             include: {
                 author: true
-            }
+            },
+            orderBy: [
+                {createdAt: "desc"}
+            ]
         })
         return posts;
     },
