@@ -1,6 +1,7 @@
 export const typeDefs = `#graphql
 
 type Query {
+me: User
 Posts : [Post]
 Users : [User]
 Profiles(userId: Int!) : Profile
