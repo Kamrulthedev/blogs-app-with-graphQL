@@ -1,5 +1,12 @@
 export const User = {
     posts: async (parent: any, args: any, {prisma, decodedToken}: any) =>{
-        console.log("User Posts:", parent);
+        const posts =  await prisma.post.findMany({
+            where: {
+                authorId: parent.id
+            }
+        })
+        return posts;
     }
 };
+
+
