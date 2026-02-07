@@ -3,9 +3,7 @@
 export const Query = {
     // Query to get all users
     Users: async (_parent: any, args: any, { prisma }: any) => {
-        const users = await prisma.user.findMany({
-            include: { posts: true }
-        })
+        const users = await prisma.user.findMany({})
         return users;
     },
 
