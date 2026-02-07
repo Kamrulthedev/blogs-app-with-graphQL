@@ -7,14 +7,14 @@ export const User = {
         console.log("Is My Profile:", ifMyProfile)
 
         // If it`s their own profile, return all posts (including unpublished)
-        if(ifMyProfile){
+        if (ifMyProfile) {
             return await prisma.post.findMany({
                 where: {
                     authorId: parent.id
                 }
             })
         }
-        else{
+        else {
             return await prisma.post.findMany({
                 where: {
                     authorId: parent.id,
@@ -23,13 +23,6 @@ export const User = {
             })
         }
 
-        const posts = await prisma.post.findMany({
-            where: {
-                authorId: parent.id
-            }
-        })
-
-        return posts;
     }
 };
 
