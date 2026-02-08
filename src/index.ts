@@ -10,7 +10,7 @@ import config from './config/index.js';
 
 
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({ adapter: { url: process.env.DATABASE_URL } as any } as any);
 
 interface Context {
   prisma: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>
