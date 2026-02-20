@@ -3,6 +3,7 @@ import { prisma } from "..";
 
 const batchUsers = async (Ids: number[]): Promise<User[]> => {
 
+    // Batch load users by their Ids
     const users = await prisma.user.findMany({
         where: {
             id: {
@@ -10,6 +11,8 @@ const batchUsers = async (Ids: number[]): Promise<User[]> => {
             }
         }
     })
+
+
 
 };
 
