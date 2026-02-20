@@ -2,7 +2,7 @@ import { User } from "@prisma/client";
 
 const batchUsers = async (userIds: number[]): Promise<User[]> => {
 
-    console.log("Batching")
+    console.log("Batching user IDs:")
 
 };
 
