@@ -12,6 +12,8 @@ const batchUsers = async (Ids: number[]): Promise<User[]> => {
         }
     })
 
+    // use data loader
+
 
 
 };
