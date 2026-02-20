@@ -10,7 +10,7 @@ import config from './config/index.js';
 
 
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 interface Context {
   prisma: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>
