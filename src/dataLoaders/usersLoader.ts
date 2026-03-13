@@ -12,12 +12,15 @@ const batchUsers = async (Ids: number[]): Promise<User[]> => {
         }
     });
 
+
     const userData: { [key: string]: User } = {};
 
     // use data loader
     users.forEach(user => {
         userData[user.]
     })
+
+
 
 
 };
