@@ -20,8 +20,7 @@ const batchUsers = async (Ids: number[]): Promise<User[]> => {
         userData[user.id] = user;
     });
 
-
-
+    return Ids.map((id) => userData[id]);
 
 };
 
