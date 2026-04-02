@@ -1,4 +1,4 @@
-import { usersLoader } from "../dataLoaders/usersLoader.ts";
+import { usersLoader } from "../dataLoaders/usersLoader.js";
 
 
 export const Post = {
