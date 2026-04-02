@@ -1,5 +1,6 @@
 import { Prisma, User } from "@prisma/client";
 import { prisma } from "..";
+import DataLoader from "dataloader";
 
 const batchUsers = async (Ids: number[]): Promise<User[]> => {
 
@@ -20,11 +21,13 @@ const batchUsers = async (Ids: number[]): Promise<User[]> => {
         userData[user.id] = user;
     });
     return Ids.map((id) => userData[id]);
-    return Ids.ma
+    return Ids.map((id) => userData)
 
 
 };
 
+// @ts-ignore
+const usersLoader = new DataLoader<number, User>(batchUsers); 
 
 
 
