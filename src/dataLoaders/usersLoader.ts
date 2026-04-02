@@ -1,32 +1,25 @@
 import { Prisma, User } from "@prisma/client";
-import { prisma } from "..";
 import DataLoader from "dataloader";
+import { prisma } from "../lib/prisma.js";
 
-const batchUsers = async (Ids: number[]): Promise<User[]> => {
-
-    // Batch load users by their Ids
+const batchUsers = async (ids: number[]): Promise<User[]> => {
     const users = await prisma.user.findMany({
         where: {
-            id: {
-                in: Ids
-            }
+            id: { in: ids }
         }
     });
 
+    const userData: Record<number, User> = {};
 
-    const userData: { [key: string]: User } = {};
-
-    // use data loader
-    users.forEach(user => {
+    users.forEach((user: { name: string; id: number; email: string; password: string; createdAt: Date; updatedAt: Date; }) => {
         userData[user.id] = user;
     });
-    return Ids.map((id) => userData[id]);
 
-
+    return ids.map(id => userData[id]);
 };
 
-// @ts-ignore
-export const usersLoader = new DataLoader<number, User>(batchUsers); 
+export const usersLoader = new DataLoader<number, User>(batchUsers);
+
 
 
 

@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "ES2020",                         
     "module": "ES2022",                          // ESM support
-    "moduleResolution": "node",                  // Node-style module resolution
+    "moduleResolution": "bundler",               // Node-style module resolution
+    "ignoreDeprecations": "6.0",                 // Suppress deprecation warnings
     "esModuleInterop": true,                     // CommonJS module support
     "allowSyntheticDefaultImports": true,        // Default imports support
     "forceConsistentCasingInFileNames": true,    // Import path case sensitivity check
