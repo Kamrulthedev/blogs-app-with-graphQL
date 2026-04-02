@@ -21,13 +21,12 @@ const batchUsers = async (Ids: number[]): Promise<User[]> => {
         userData[user.id] = user;
     });
     return Ids.map((id) => userData[id]);
-    return Ids.map((id) => userData)
 
 
 };
 
 // @ts-ignore
-const usersLoader = new DataLoader<number, User>(batchUsers); 
+export const usersLoader = new DataLoader<number, User>(batchUsers); 
 
 
 
