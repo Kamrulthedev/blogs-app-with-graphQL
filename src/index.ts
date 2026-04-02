@@ -26,7 +26,7 @@ const server = new ApolloServer({
 
 async function bootstrap() {
   const { url } = await startStandaloneServer(server, {
-    listen: { port: 4002 },
+    listen: { port: 4001 },
     context: async ({ req }): Promise<Context> => {
       const authHeader = req.headers.authorization;
 
